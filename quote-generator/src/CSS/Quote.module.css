@@ -1,0 +1,25 @@
+.card {
+  min-width: 400px;
+  min-height: 200px;
+  max-width: 400px;
+  max-height: auto;
+}
+
+.root{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgreen;
+}
+
+.quoteText{
+    font-size: 30px;
+    text-align: center;
+}
+
+.quoteAuthor{
+    text-align: right;
+}
+
+/* const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16); */
