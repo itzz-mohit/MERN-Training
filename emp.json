@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Dhoni",
+    "empid": "7",
+    "salary": "10000$",
+    "designation": "Captain"
+  },
+  {
+    "name": "Kohli",
+    "empid": "18",
+    "salary": "1000$",
+    "designation": "Opener"
+  },
+  {
+    "name": "Rohit",
+    "empid": "45",
+    "salary": "1000$",
+    "designation": "Vice-Captain"
+  }
+]
