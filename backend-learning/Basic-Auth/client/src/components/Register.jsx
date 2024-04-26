@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const formSubmission = () => {
+    fetch("http://localhost:3000/api/register", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password, username }),
+    }).then((res) =>
+      res.json().then((data) => {
+        console.log(data);
+        if (data) {
+          navigate("/");                                                                                       
+        } else {
+          navigate("/register");
+        }
+      })
+    );
+    console.log("Username is " + username);
+    console.log("Email is " + email);
+    console.log("Password is " + password);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    formSubmission();
+  };
   return (
     <section className="mt-14">
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -8,7 +40,7 @@ const Register = () => {
           <h2 className="text-center text-4xl font-bold leading-tight text-black">
             Sign Up
           </h2>
-          <form className="mt-8">
+          <form className="mt-8" onSubmit={handleSubmit}>
             <div className="space-y-5">
               <div>
                 <label
@@ -22,6 +54,7 @@ const Register = () => {
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="text"
                     placeholder="Username"
+                    onChange={(value) => setUsername(value.target.value)}
                   ></input>
                 </div>
               </div>
@@ -38,6 +71,7 @@ const Register = () => {
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="email"
                     placeholder="Email"
+                    onChange={(value) => setEmail(value.target.value)}
                   ></input>
                 </div>
               </div>
@@ -55,14 +89,17 @@ const Register = () => {
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="password"
                     placeholder="Password"
+                    onChange={(value) => setPassword(value.target.value)}
                   ></input>
                 </div>
               </div>
               <p className="mt-2  text-sm text-gray-600 ">
                 Already have an account?
-                <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
-                  Sign In
-                </span>
+                <Link to="/">
+                  <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
+                    Sign In
+                  </span>
+                </Link>
               </p>
               <div>
                 <button

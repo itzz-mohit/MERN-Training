@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -7,7 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const formSubmission = () => {
-    fetch("http://localhost:3000/auth", {
+    fetch("http://localhost:3000/api/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -77,9 +77,11 @@ const Login = () => {
               </div>
               <p className="mt-2  text-sm text-gray-600 ">
                 Don't have an account?
-                <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
-                  Create a free account
-                </span>
+                <Link to="/register">
+                  <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
+                    Create a free account
+                  </span>
+                </Link>
               </p>
               <div>
                 <button

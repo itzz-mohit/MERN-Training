@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/lmsAvneet");
+mongoose.connect("mongodb://localhost:27017/lmstesting");
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
