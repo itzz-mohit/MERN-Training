@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { register } from "./services/api";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const initialValue = {
     username: "",
     email: "",
@@ -19,6 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       await register(user);
+      navigate("/");
     } catch (error) {
       console.error("Registration failed:", error);
     }
@@ -93,9 +97,11 @@ const Register = () => {
               </div>
               <p className="mt-2  text-sm text-gray-600 ">
                 Already have an account?
-                <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
-                  Sign In
-                </span>
+                <Link to="/">
+                  <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
+                    Sign In
+                  </span>
+                </Link>
               </p>
               <div>
                 <button

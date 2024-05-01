@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "./services/api";
 
 const Login = () => {
@@ -84,9 +84,11 @@ const Login = () => {
               </div>
               <p className="mt-2  text-sm text-gray-600 ">
                 Don't have an account?
-                <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
-                  Create a free account
-                </span>
+                <Link to="/register">
+                  <span className="font-semibold text-black transition-all duration-200 hover:underline ms-1 cursor-pointer">
+                    Create a free account
+                  </span>
+                </Link>
               </p>
               <div>
                 <button
